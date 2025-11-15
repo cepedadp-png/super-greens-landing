@@ -1,496 +1,614 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Super Greens – Energía limpia en un solo vaso</title>
-  <meta name="description" content="Super Greens: mezcla de superalimentos verdes en polvo. Más nutrientes, mejor digestión y energía limpia en 1 vaso al día. Pago contra entrega y envío preferencial si completas el formulario." />
-  <meta property="og:title" content="Super Greens – Energía limpia en un solo vaso" />
-  <meta property="og:description" content="Super Greens: mezcla de superalimentos verdes en polvo. Más nutrientes, mejor digestión y energía limpia en 1 vaso al día. Pago contra entrega y envío preferencial si completas el formulario." />
-  <meta property="og:type" content="website" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>SuperGreens Flex Pro – Energía limpia todos los días</title>
+	<meta name="description" content="SuperGreens Flex Pro: fórmula verde con superalimentos, probióticos y vitaminas. Detox, digestión, energía y enfoque en un solo scoop. Envíos a todo Ecuador y pago contra entrega." />
+	<meta property="og:title" content="SuperGreens Flex Pro – Energía limpia todos los días" />
+	<meta property="og:description" content="Energía estable, digestión ligera y foco mental en un solo scoop diario. Envíos a todo Ecuador, pago contra entrega." />
+	<meta property="og:type" content="website" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		/* Estilos base para scroll behavior y fuente Inter */
+		html{scroll-behavior:smooth}
+		body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,'Noto Sans'}
 
-  <!-- Tailwind CDN -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+		/* Estilo para mejorar el aspecto de los inputs en el tema oscuro */
+		input:focus, select:focus {
+			outline: none;
+			border-color: #34d399; /* emerald-400 */
+			box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.5);
+		}
 
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,'Noto Sans'; }
-    .glow { box-shadow:0 0 0 1px rgba(255,255,255,.08),0 10px 40px rgba(16,185,129,.25); }
-  </style>
+		/* Estilo específico para el select, haciéndolo un poco más visible */
+		select {
+			color: white;
+			appearance: none;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+			background-position: right 0.75rem center;
+			background-size: 1.5em 1.5em;
+			background-repeat: no-repeat;
+		}
+	</style>
 </head>
-<body class="bg-[#071411] text-white">
-  <!-- TOP PROMO BAR -->
-  <div class="w-full bg-gradient-to-r from-emerald-500 to-lime-400 text-black text-sm font-semibold text-center py-2">
-    🥤 Envío <b>PREFERENCIAL</b> de Super Greens pagando contra entrega si dejas tus datos en los <b>próximos 10 minutos</b>
-  </div>
+<body class="bg-[#050b09] text-white" id="top">
+	<!-- BARRA PROMO -->
+	<div class="w-full bg-gradient-to-r from-emerald-500 to-lime-400 text-black text-sm font-semibold text-center py-2">
+		🚚 Envío <b>GRATIS</b> a todo Ecuador pagando contra entrega si dejas tus datos en los
+		<b>próximos 10 minutos</b>.
+		<span id="countdown" class="ml-2 px-2 py-0.5 rounded bg-black/10 text-xs align-middle"></span>
+	</div>
 
-  <!-- STICKY NAV -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-black/60 border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-3">
-        <!-- Logo simple -->
-        <svg class="h-9 w-9" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Super Greens">
-          <rect x="2" y="2" width="60" height="60" rx="14" fill="#10B981"/>
-          <text x="10" y="40" font-size="16" font-weight="800" fill="#052e26">SG</text>
-        </svg>
-        <span class="hidden sm:block font-semibold">Super Greens</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
-        <a href="#beneficios" class="hover:text-white">Beneficios</a>
-        <a href="#caracteristicas" class="hover:text-white">Ingredientes y uso</a>
-        <a href="#planes" class="hover:text-white">Packs</a>
-        <a href="#pedido" class="hover:text-white">Pedir ahora</a>
-        <a href="#faq" class="hover:text-white">FAQ</a>
-      </nav>
-      <div class="hidden md:flex items-center gap-2">
-        <!-- TELÉFONOS ACTUALIZADOS -->
-        <a href="https://wa.me/593983264446?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Super%20Greens" target="_blank" rel="noopener" class="rounded-xl px-4 py-2 bg-emerald-500 font-semibold hover:scale-[1.02] active:scale-95">WA 098 326 4446</a>
-        <a href="https://wa.me/593986199193?text=Hola%2C%20quiero%20comprar%20Super%20Greens" target="_blank" rel="noopener" class="rounded-xl px-4 py-2 bg-emerald-500 font-semibold hover:scale-[1.02] active:scale-95">WA 098 619 9193</a>
-      </div>
-      <button id="openLead" class="md:hidden rounded-xl px-4 py-2 bg-emerald-500 font-semibold">Pedir</button>
-    </div>
-  </header>
+	<!-- NAV -->
+	<header class="sticky top-0 z-40 backdrop-blur bg-black/70 border-b border-white/10">
+		<div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+			<a href="#top" class="flex items-center gap-3">
+				<div class="h-9 w-9 rounded-2xl bg-emerald-500 flex items-center justify-center font-extrabold text-black text-sm">
+					SG
+				</div>
+				<span class="font-semibold hidden sm:block">SuperGreens Flex Pro</span>
+			</a>
+			<nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+				<a href="#pilares" class="hover:text-white transition">4 Pilares</a>
+				<a href="#beneficios" class="hover:text-white transition">Beneficios</a>
+				<a href="#ingredientes" class="hover:text-white transition">Ingredientes</a>
+				<a href="#packs" class="hover:text-white transition">Packs</a>
+				<a href="#testimonios" class="hover:text-white transition">Testimonios</a>
+				<a href="#faq" class="hover:text-white transition">FAQ</a>
+				<a href="#pedido" class="px-4 py-2 rounded-xl bg-emerald-500 text-black font-semibold shadow-lg shadow-emerald-500/30 hover:scale-[1.03] active:scale-95 transition duration-150">Pedir ahora</a>
+			</nav>
+			<button class="md:hidden px-4 py-2 rounded-xl bg-emerald-500 text-black font-semibold shadow-lg shadow-emerald-500/30 active:scale-95 transition duration-150" onclick="document.getElementById('pedido').scrollIntoView({behavior:'smooth'})">
+				Pedir
+			</button>
+		</div>
+	</header>
 
-  <!-- HERO -->
-  <section id="top" class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(600px_300px_at_80%_20%,rgba(16,185,129,0.18),transparent)]"></div>
-    <div class="max-w-7xl mx-auto px-4 py-8 md:py-14 grid md:grid-cols-2 gap-10 items-center">
-      <!-- Texto -->
-      <div>
-        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/10 rounded-full px-3 py-1 text-xs mb-4">
-          <span>✔︎ Mezcla de superalimentos verdes</span>
-          <span>✔︎ Pago contra entrega</span>
-          <span>✔︎ Soporte por WhatsApp</span>
-        </div>
-        <h1 class="text-4xl md:text-6xl font-black leading-tight">
-          Super Greens para una 
-          <span class="text-emerald-400">energía limpia y ligera</span>
-          todo el día
-        </h1>
-        <p class="mt-4 text-lg text-white/80">
-          Un scoop de Super Greens concentra nutrientes de vegetales, frutas y superalimentos verdes en un solo vaso. Más fácil que cocinar, más práctico que pastillas, sin dramas.
-        </p>
-        <ul class="mt-5 space-y-2 text-white/90">
-          <li class="flex gap-2"><span class="text-emerald-400">•</span> Apoya energía estable sin picos de azúcar ni cafeína extrema.</li>
-          <li class="flex gap-2"><span class="text-emerald-400">•</span> Acompaña la digestión gracias a sus fibras y enzimas.</li>
-          <li class="flex gap-2"><span class="text-emerald-400">•</span> Aporta antioxidantes y micronutrientes clave difíciles de cubrir solo con la dieta diaria.</li>
-        </ul>
+	<!-- HERO -->
+	<section class="relative overflow-hidden">
+		<!-- Efecto de brillo de fondo para el tema oscuro -->
+		<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.22),transparent_60%)]"></div>
+		<div class="max-w-6xl mx-auto px-4 py-10 md:py-16 grid md:grid-cols-2 gap-10 items-center relative">
+			<!-- Copy -->
+			<div>
+				<div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs mb-4">
+					<span>✔ 30 porciones</span>
+					<span>✔ Sin azúcar añadida</span>
+					<span>✔ Envíos a todo Ecuador</span>
+				</div>
+				<h1 class="text-4xl md:text-5xl font-black leading-tight">
+					Energía limpia, digestión ligera
+					<span class="text-emerald-400 block">en un solo scoop diario.</span>
+				</h1>
+				<p class="mt-4 text-white/80 text-lg">
+					SuperGreens Flex Pro combina superalimentos verdes, probióticos y vitaminas para ayudarte a rendir más
+					sin depender de café todo el día.
+				</p>
+				<ul class="mt-5 space-y-2 text-white/85 text-sm">
+					<li class="flex gap-2 items-center"><span class="text-emerald-400">⚡</span> Más energía estable durante el día.</li>
+					<li class="flex gap-2 items-center"><span class="text-emerald-400">💧</span> Menos hinchazón y mejor digestión.</li>
+					<li class="flex gap-2 items-center"><span class="text-emerald-400">🧠</span> Foco mental para trabajo, estudio y entrenamiento.</li>
+				</ul>
+				<div class="mt-6 flex flex-wrap gap-4 items-center">
+					<a href="#pedido" class="px-6 py-3 rounded-2xl bg-emerald-500 text-black font-semibold text-sm md:text-base shadow-xl shadow-emerald-500/30 hover:scale-[1.03] active:scale-95 transition duration-150">
+						Quiero probar SuperGreens
+					</a>
+					<a href="#beneficios" class="text-sm text-white/70 hover:text-white underline-offset-4 hover:underline transition">
+						Ver cómo me ayuda
+					</a>
+				</div>
+				<div class="mt-6 flex flex-wrap gap-4 text-xs text-white/70">
+					<span>✔ Pago contra entrega</span>
+					<span>✔ Garantía 30 días</span>
+					<span>✔ Soporte por WhatsApp</span>
+				</div>
+			</div>
+			<!-- Contenedor de IMAGEN Y BOTÓN DE VIDEO (Bloque visual solicitado) -->
+			<div class="relative">
+				<div class="absolute -inset-6 bg-emerald-500/15 blur-3xl rounded-full"></div>
+				
+				<div class="relative block rounded-3xl border-2 border-emerald-500/50 bg-gradient-to-br from-emerald-600/40 to-black/80 p-5 shadow-2xl shadow-emerald-500/30 overflow-hidden text-center">
+					
+					<!-- Imagen Placeholder del Producto (Simulando la imagen de SuperGreens) -->
+					<!-- Reemplazo de la imagen por una más representativa o con diseño de producto -->
+					<img 
+						src="https://placehold.co/400x400/10b981/000000?text=SuperGreens%20Flex%20Pro%0A(Producto)" 
+						onerror="this.onerror=null;this.src='https://placehold.co/400x400/10b981/ffffff?text=Producto';"
+						alt="Imagen del Pouch de SuperGreens Flex Pro" 
+						class="mx-auto w-3/4 h-auto object-contain rounded-xl mb-6 shadow-2xl shadow-black/50"
+					/>
+					
+					<div class="mt-4">
+						<div class="font-semibold text-white">Mira el video de tu SuperGreens Flex Pro</div>
+						<div id="videoStatus" class="text-white/70 text-xs mb-4">Instrucciones, preparación y beneficios en TikTok</div>
+					</div>
 
-        <!-- Countdown + oferta -->
-        <div class="mt-6 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-4 flex flex-wrap items-center gap-4">
-          <div class="text-sm">
-            Envío <b>PREFERENCIAL</b> de Super Greens contra entrega si completas el formulario en:
-          </div>
-          <div id="countdown" class="font-extrabold text-2xl tracking-wider">00:09:59</div>
-          <span class="text-xs bg-white text-black px-3 py-1 rounded-full">
-            +Shaker de regalo por compra hoy*
-          </span>
-        </div>
+					<!-- Botón para ver el video en TikTok (Abre en nueva pestaña) - URL ACTUALIZADA -->
+					<a 
+						href="https://vm.tiktok.com/ZMAvhXg8p/" 
+						target="_blank"
+						class="inline-flex items-center justify-center w-full px-4 py-3 rounded-xl bg-emerald-500 text-black font-semibold shadow-xl shadow-emerald-500/30 hover:scale-[1.03] active:scale-95 transition duration-150 gap-2"
+					>
+						<!-- SVG de un ícono de video -->
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video text-black">
+						    <path d="m22 8-6 4 6 4V8Z"/><path d="M14 12H2"/>
+						</svg>
+						Ver Video en TikTok
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        <!-- CTAs -->
-        <div class="mt-6 flex flex-wrap items-center gap-3">
-          <a href="#pedido" class="rounded-2xl px-6 py-3 bg-emerald-500 text-black font-semibold hover:scale-[1.02] active:scale-95">
-            Pedir Super Greens
-          </a>
-          <!-- TODO: Cambiar enlace a tu red social -->
-          <a href="#" target="_blank" class="rounded-2xl px-6 py-3 border border-white/20 font-semibold hover:bg-white/5">
-            Ver resultados de clientes
-          </a>
-        </div>
-        <p class="mt-3 text-sm text-white/70">
-          Garantía básica • Pago contra entrega • Acompañamiento por WhatsApp para resolver dudas de uso
-        </p>
+	<!-- 4 PILARES / PROMESA REFORZADA -->
+	<section id="pilares" class="max-w-6xl mx-auto px-4 py-10">
+		<div class="text-center max-w-xl mx-auto mb-8">
+			<h2 class="text-2xl md:text-3xl font-bold">Cuatro cambios que notarás</h2>
+			<p class="mt-2 text-white/75 text-sm md:text-base">Nuestro blend está diseñado para impactar directamente en estos 4 pilares de tu bienestar.</p>
+		</div>
+		<div class="grid md:grid-cols-4 gap-6 text-sm">
+			<div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center transition duration-200 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/10">
+				<div class="text-3xl mb-3">🔋</div>
+				<h3 class="font-semibold mb-1 text-emerald-300">Energía Limpia</h3>
+				<p class="text-white/80 text-xs">Sin choques ni nerviosismo. Rendimiento estable todo el día.</p>
+			</div>
+			<div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center transition duration-200 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/10">
+				<div class="text-3xl mb-3">🧘</div>
+				<h3 class="font-semibold mb-1 text-emerald-300">Digestión Ligera</h3>
+				<p class="text-white/80 text-xs">Adiós a la hinchazón. Probióticos para un intestino feliz.</p>
+			</div>
+			<div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center transition duration-200 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/10">
+				<div class="text-3xl mb-3">🎯</div>
+				<h3 class="font-semibold mb-1 text-emerald-300">Foco Total</h3>
+				<p class="text-white/80 text-xs">Claridad mental para estudiar, trabajar o concentrarte en tus metas.</p>
+			</div>
+			<div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center transition duration-200 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/10">
+				<div class="text-3xl mb-3">🛡️</div>
+				<h3 class="font-semibold mb-1 text-emerald-300">Soporte Inmune</h3>
+				<p class="text-white/80 text-xs">Nutrientes esenciales que fortalecen tus defensas día a día.</p>
+			</div>
+		</div>
+	</section>
 
-        <!-- Métodos de pago (visual) -->
-        <div class="mt-6 flex items-center gap-3 opacity-80">
-          <img src="https://placehold.co/64x32?text=Efectivo" class="h-6" alt="contra entrega"/>
-          <img src="https://placehold.co/64x32?text=Transfer" class="h-6" alt="transferencia"/>
-        </div>
-      </div>
+	<!-- BENEFICIOS -->
+	<section id="beneficios" class="max-w-6xl mx-auto px-4 py-12">
+		<div class="text-center max-w-3xl mx-auto mb-10">
+			<h2 class="text-3xl md:text-4xl font-bold">Lo que puedes sentir con SuperGreens Flex Pro</h2>
+			<p class="mt-3 text-white/75 text-sm md:text-base">
+				No es magia. Es nutrición concentrada que, acompañada de buenos hábitos, puede marcar la diferencia en tu día a día.
+			</p>
+		</div>
+		<div class="grid md:grid-cols-3 gap-6 text-sm">
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:border-emerald-500 transition shadow-md hover:shadow-emerald-500/20">
+				<div class="text-2xl mb-2 text-emerald-400">⚡</div>
+				<h3 class="font-semibold mb-1">Energía más estable</h3>
+				<p class="text-white/80">Menos bajones fuertes durante la mañana o la tarde. Acompaña tu rutina sin choques.</p>
+			</div>
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:border-emerald-500 transition shadow-md hover:shadow-emerald-500/20">
+				<div class="text-2xl mb-2 text-emerald-400">🦠</div>
+				<h3 class="font-semibold mb-1">Apoyo digestivo</h3>
+				<p class="text-white/80">Probióticos y fibra que colaboran con tu microbiota intestinal.</p>
+			</div>
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:border-emerald-500 transition shadow-md hover:shadow-emerald-500/20">
+				<div class="text-2xl mb-2 text-emerald-400">🎯</div>
+				<h3 class="font-semibold mb-1">Enfoque mental</h3>
+				<p class="text-white/80">Nutrientes que contribuyen al funcionamiento normal del sistema nervioso.</p>
+			</div>
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:border-emerald-500 transition shadow-md hover:shadow-emerald-500/20">
+				<div class="text-2xl mb-2 text-emerald-400">🛡️</div>
+				<h3 class="font-semibold mb-1">Soporte inmune</h3>
+				<p class="text-white/80">Vitaminas antioxidantes que ayudan a proteger frente al estrés oxidativo.</p>
+			</div>
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:border-emerald-500 transition shadow-md hover:shadow-emerald-500/20">
+				<div class="text-2xl mb-2 text-emerald-400">⏱️</div>
+				<h3 class="font-semibold mb-1">Rutina simple</h3>
+				<p class="text-white/80">Se prepara en menos de 30 segundos. Ideal para agendas apretadas.</p>
+			</div>
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 hover:border-emerald-500 transition shadow-md hover:shadow-emerald-500/20">
+				<div class="text-2xl mb-2 text-emerald-400">🥤</div>
+				<h3 class="font-semibold mb-1">Sabor fresco</h3>
+				<p class="text-white/80">Perfil verde suave que puedes combinar con agua, hielo o tu jugo favorito.</p>
+			</div>
+		</div>
+	</section>
 
-      <!-- Imagen -->
-      <div class="relative">
-        <div class="absolute -inset-6 bg-emerald-500/10 blur-3xl rounded-full"></div>
-        <img src="https://placehold.co/600x600/06281f/ffffff?text=Super+Greens" alt="Super Greens" class="relative rounded-3xl w-full aspect-square object-cover border border-white/10 shadow-2xl" />
-        <div class="mt-4 grid grid-cols-3 gap-3">
-          <img loading="lazy" src="https://placehold.co/300x300/022c22/ffffff?text=Polvo+verde" class="rounded-xl border border-white/10" alt="Polvo Super Greens"/>
-          <img loading="lazy" src="https://placehold.co/300x300/064e3b/ffffff?text=Vaso+listo" class="rounded-xl border border-white/10" alt="Vaso preparado"/>
-          <img loading="lazy" src="https://placehold.co/300x300/047857/ffffff?text=Ingredientes" class="rounded-xl border border-white/10" alt="Ingredientes verdes"/>
-        </div>
-      </div>
-    </div>
-  </section>
+	<!-- INGREDIENTES / CÓMO USAR -->
+	<section id="ingredientes" class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8">
+		<div class="rounded-3xl bg-white/5 border border-white/10 p-6 text-sm">
+			<h3 class="text-lg font-semibold mb-3">¿Qué contiene SuperGreens Flex Pro?</h3>
+			<p class="text-white/80 mb-3">
+				Fórmula con una combinación de superalimentos verdes, adaptógenos, probióticos y vitaminas seleccionadas.
+			</p>
+			<div class="flex flex-wrap gap-2 text-xs">
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Espinaca (Orgánica)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Kale (Orgánico)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Spirulina (Alga)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Chlorella (Alga)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Matcha (Té Verde)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Ashwagandha (Adaptógeno)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Rhodiola (Adaptógeno)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Mezcla probiótica (5 cepas)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Prebióticos (Fibra)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 font-medium">Vitamina C y B</span>
+			</div>
+			<p class="text-[11px] text-white/60 mt-4">
+				*Esta descripción es general y no sustituye el detalle del etiquetado oficial del producto. Consulta siempre la
+				información nutricional del empaque.*
+			</p>
+		</div>
 
-  <!-- PROBLEM / SOLUTION STRIP -->
-  <section class="max-w-7xl mx-auto px-4 py-10">
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="rounded-2xl p-5 bg-white/5 border border-white/10">
-        <h3 class="font-bold mb-1">Dieta desordenada</h3>
-        <p class="text-white/80 text-sm">Comidas rápidas, pocas verduras y cansancio constante. Sabes que te faltan micronutrientes… pero no te da el tiempo.</p>
-      </div>
-      <div class="rounded-2xl p-5 bg-white/5 border border-white/10">
-        <h3 class="font-bold mb-1">Digestión pesada</h3>
-        <p class="text-white/80 text-sm">Inflamación, pesadez y sensación de “no me cae nada bien”, sobre todo al final del día.</p>
-      </div>
-      <div class="rounded-2xl p-5 bg-white/5 border border-white/10">
-        <h3 class="font-bold mb-1">Super Greens como atajo</h3>
-        <p class="text-white/80 text-sm">Un vaso al día con superalimentos verdes que acompañan energía, digestión y bienestar sin reinventar toda tu rutina.</p>
-      </div>
-    </div>
-  </section>
+		<div class="rounded-3xl bg-white/5 border border-white/10 p-6 text-sm">
+			<h3 class="text-lg font-semibold mb-3">Cómo tomar SuperGreens Flex Pro</h3>
+			<ol class="list-decimal pl-5 space-y-2 text-white/80">
+				<li>Agrega 1 scoop (aprox. 10–12 g) en 250–300 ml de agua fría.</li>
+				<li>Mezcla o agita durante 10–15 segundos hasta integrar bien.</li>
+				<li>Opcional: añade hielo, limón o tu jugo favorito.</li>
+				<li>Tómalo preferiblemente en la mañana o antes de iniciar tu jornada.</li>
+				<li>Uso sugerido: 1 vez al día, como parte de un estilo de vida saludable.</li>
+			</ol>
+			<p class="text-[11px] text-white/60 mt-4">
+				*Si estás embarazada, en periodo de lactancia, tomas medicación o tienes una condición médica específica,
+				consulta antes con tu profesional de salud.*
+			</p>
+		</div>
+	</section>
 
-  <!-- BENEFICIOS -->
-  <section id="beneficios" class="max-w-7xl mx-auto px-4 py-12">
-    <div class="text-center max-w-3xl mx-auto mb-10">
-      <div class="text-sm tracking-widest uppercase text-emerald-400 mb-2">Resultados que buscamos</div>
-      <h2 class="text-3xl md:text-5xl font-bold leading-tight">Beneficios de tomar Super Greens diariamente</h2>
-      <p class="mt-4 text-white/80">
-        Super Greens no es magia, es constancia. Integrado a tu día a día, puede ayudarte a sentirte más ligero, con mejor energía y más orden digestivo.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-2xl">⚡</div>
-        <h3 class="text-xl font-semibold mt-2">Energía más estable</h3>
-        <p class="text-white/80 mt-1">Acompaña tu energía diaria sin depender solo de café y azúcar, gracias a su perfil de vitaminas y minerales.</p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-2xl">💤</div>
-        <h3 class="text-xl font-semibold mt-2">Sensación de ligereza</h3>
-        <p class="text-white/80 mt-1">Fibra e ingredientes verdes que apoyan el tránsito intestinal y ayudan a sentir menos pesadez.</p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-2xl">💚</div>
-        <h3 class="text-xl font-semibold mt-2">Soporte a defensas</h3>
-        <p class="text-white/80 mt-1">Antioxidantes y fitonutrientes que acompañan el sistema inmune como parte de un estilo de vida saludable.</p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-2xl">🛡️</div>
-        <h3 class="text-xl font-semibold mt-2">Menos excusas</h3>
-        <p class="text-white/80 mt-1">Cuando no logras comer verde, Super Greens es un atajo práctico para no dejar pasar el día “en blanco”.</p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-2xl">⏱️</div>
-        <h3 class="text-xl font-semibold mt-2">Listo en segundos</h3>
-        <p class="text-white/80 mt-1">1 scoop + agua o jugo, agitas y listo. Sin licuadora, sin lavar mil cosas.</p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-2xl">🥤</div>
-        <h3 class="text-xl font-semibold mt-2">Flexible con tu rutina</h3>
-        <p class="text-white/80 mt-1">Puedes tomarlo en ayunas, media mañana o tarde, adaptado a tu agenda.</p>
-      </div>
-    </div>
-  </section>
+	<!-- PACKS / PRECIOS -->
+	<section id="packs" class="max-w-6xl mx-auto px-4 py-14">
+		<div class="text-center mb-10">
+			<h2 class="text-3xl md:text-4xl font-bold">Elige el pack que se ajusta a ti</h2>
+			<p class="mt-3 text-white/75 text-sm md:text-base">Mientras más meses te cubras, mejor precio por porción.</p>
+			<div class="mt-4 text-xs text-emerald-400 font-medium">¡Envío GRATIS en todos los packs!</div>
+		</div>
+		<div class="grid md:grid-cols-3 gap-6 text-sm">
+			<!-- Starter -->
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 flex flex-col shadow-lg transition duration-200 hover:scale-[1.03] hover:border-emerald-500">
+				<h3 class="font-semibold text-lg mb-1">Starter</h3>
+				<p class="text-white/70 mb-2">1 pouch • 30 porciones</p>
+				<div class="text-xs text-white/60 line-through">$49</div>
+				<div class="text-3xl font-bold text-emerald-400">$45 <span class="text-xs font-normal text-white/60">USD</span></div>
+				<p class="text-xs text-white/60 mb-4">$1.50 por porción aprox.</p>
+				<ul class="space-y-1 text-white/80 mb-5">
+					<li>✔ Ideal para probar el producto</li>
+					<li>✔ Envío 24–72 horas</li>
+					<li>✔ Pago contra entrega</li>
+				</ul>
+				<button onclick="scrollToPedido('Starter (1 pouch)')" class="mt-auto px-4 py-3 rounded-xl bg-emerald-500 text-black font-semibold shadow-xl shadow-emerald-500/30 hover:scale-[1.03] active:scale-95 transition duration-150">
+					Lo quiero
+				</button>
+			</div>
+			<!-- Duo -->
+			<div class="rounded-3xl bg-emerald-500/10 border-2 border-emerald-400 p-6 flex flex-col relative shadow-2xl shadow-emerald-500/50 transition duration-200 scale-[1.02] md:scale-100 md:hover:scale-[1.03]">
+				<div class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-full bg-emerald-500 text-black text-[11px] font-semibold ring-2 ring-black">
+					⭐ Más Popular
+				</div>
+				<h3 class="font-semibold text-lg mb-1 mt-2 md:mt-0">Dúo Ahorro</h3>
+				<p class="text-white/70 mb-2">2 pouches • 60 porciones</p>
+				<div class="text-xs text-white/60 line-through">$90</div>
+				<div class="text-3xl font-bold text-emerald-400">$80 <span class="text-xs font-normal text-white/60">USD</span></div>
+				<p class="text-xs text-white/60 mb-4">$1.33 por porción aprox.</p>
+				<ul class="space-y-1 text-white/80 mb-5">
+					<li>✔ Te cubre ~2 meses</li>
+					<li>✔ Mejor precio por porción</li>
+					<li>✔ Envío incluido</li>
+				</ul>
+				<button onclick="scrollToPedido('Dúo Ahorro (2 pouches)')" class="mt-auto px-4 py-3 rounded-xl bg-emerald-500 text-black font-semibold shadow-xl shadow-emerald-500/30 hover:scale-[1.03] active:scale-95 transition duration-150">
+					Lo quiero
+				</button>
+			</div>
+			<!-- Mega -->
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-6 flex flex-col shadow-lg transition duration-200 hover:scale-[1.03] hover:border-emerald-500">
+				<h3 class="font-semibold text-lg mb-1">Mega Fan</h3>
+				<p class="text-white/70 mb-2">3 pouches • 90 porciones</p>
+				<div class="text-xs text-white/60 line-through">$129</div>
+				<div class="text-3xl font-bold text-emerald-400">$115 <span class="text-xs font-normal text-white/60">USD</span></div>
+				<p class="text-xs text-white/60 mb-4">$1.27 por porción aprox.</p>
+				<ul class="space-y-1 text-white/80 mb-5">
+					<li>✔ ~3 meses de cobertura</li>
+					<li>✔ ¡Mejor valor!</li>
+					<li>✔ Envío incluido</li>
+				</ul>
+				<button onclick="scrollToPedido('Mega Fan (3 pouches)')" class="mt-auto px-4 py-3 rounded-xl bg-emerald-500 text-black font-semibold shadow-xl shadow-emerald-500/30 hover:scale-[1.03] active:scale-95 transition duration-150">
+					Lo quiero
+				</button>
+			</div>
+		</div>
+	</section>
 
-  <!-- INGREDIENTES / CÓMO USAR -->
-  <section id="caracteristicas" class="max-w-7xl mx-auto px-4 py-12">
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <h4 class="font-semibold mb-2">¿Qué incluye Super Greens?*</h4>
-        <ul class="list-disc pl-6 space-y-1 text-white/80 text-sm">
-          <li>Mezcla de superalimentos verdes (espirulina, chlorella, hierba de trigo, etc.).</li>
-          <li>Extractos de frutas y vegetales deshidratados.</li>
-          <li>Vitaminas y minerales seleccionados para complementar la dieta.</li>
-          <li>Sin azúcar refinada añadida.</li>
-        </ul>
-        <p class="text-xs text-white/60 mt-3">
-          *La composición final depende de la fórmula registrada de tu producto. La información aquí es de ejemplo y no reemplaza el etiquetado oficial ni recomendaciones personalizadas.
-        </p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <h4 class="font-semibold mb-2">¿Cómo tomar Super Greens?</h4>
-        <ul class="list-disc pl-6 space-y-1 text-white/80">
-          <li>Disuelve 1 scoop (medida incluida) en 200–300 ml de agua fría o tu jugo favorito.</li>
-          <li>Tómalo 1 vez al día, idealmente en ayunas o media mañana.</li>
-          <li>Agita fuerte 10–15 segundos (o usa shaker) para mejor textura.</li>
-          <li>Usa de forma constante y acompaña con buena hidratación y alimentación equilibrada.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+	<!-- TESTIMONIOS -->
+	<section id="testimonios" class="max-w-6xl mx-auto px-4 py-10">
+		<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+			<div>
+				<h2 class="text-2xl md:text-3xl font-bold">Personas que ya lo usan</h2>
+				<p class="text-sm text-white/75 mt-2">Historias reales de personas que integraron SuperGreens en su rutina.</p>
+			</div>
+			<a href="https://www.instagram.com/supergreensflexpro/?igsh=MXJqNmRicjR3OGpidg%3D%3D" target="_blank" class="text-xs md:text-sm text-emerald-300 underline-offset-4 hover:underline transition flex-shrink-0">
+				Ver más reseñas en Instagram &rarr;
+			</a>
+		</div>
+		<div class="grid md:grid-cols-3 gap-6 text-sm">
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-5 shadow-inner shadow-black/30 transition duration-200 hover:border-emerald-500">
+				<div class="mb-2 text-xl text-emerald-400">★★★★★</div>
+				<p class="text-white/85 italic">“Antes en la tarde estaba muerta de sueño. Ahora me siento más estable y sin tanto café.”</p>
+				<p class="mt-3 text-xs font-semibold text-white/70">Andrea C.</p>
+				<p class="text-xs text-white/60">32 años – Quito</p>
+			</div>
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-5 shadow-inner shadow-black/30 transition duration-200 hover:border-emerald-500">
+				<div class="mb-2 text-xl text-emerald-400">★★★★★</div>
+				<p class="text-white/85 italic">“Me ayudó bastante con la sensación de hinchazón. Lo tomo todas las mañanas.”</p>
+				<p class="mt-3 text-xs font-semibold text-white/70">Carlos M.</p>
+				<p class="text-xs text-white/60">29 años – Guayaquil</p>
+			</div>
+			<div class="rounded-3xl bg-white/5 border border-white/10 p-5 shadow-inner shadow-black/30 transition duration-200 hover:border-emerald-500">
+				<div class="mb-2 text-xl text-emerald-400">★★★★★</div>
+				<p class="text-white/85 italic">“Lo uso antes de entrenar. Me siento más ligera y con mejor enfoque en el gym.”</p>
+				<p class="mt-3 text-xs font-semibold text-white/70">Sofía P.</p>
+				<p class="text-xs text-white/60">27 años – Cuenca</p>
+			</div>
+		</div>
+	</section>
 
-  <!-- PLANES / PACKS -->
-  <section id="planes" class="max-w-7xl mx-auto px-4 py-16">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl md:text-5xl font-bold leading-tight">Elige tu pack de Super Greens</h2>
-      <p class="mt-4 text-white/80">Optimiza el precio por porción y asegura tu stock del mes.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6 items-stretch">
-      <!-- Plan 1 -->
-      <div class="relative rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col">
-        <h3 class="text-xl font-semibold">Pack Inicio</h3>
-        <p class="text-white/70 text-sm mb-2">Para probar Super Greens sin compromiso.</p>
-        <div class="text-sm text-white/60 line-through">$55</div>
-        <div class="text-4xl font-extrabold mb-1">$45 <span class="text-sm text-white/60 font-medium">USD</span></div>
-        <div class="text-xs text-white/70 mb-4">Aprox. 30 porciones.</div>
-        <ul class="text-white/80 space-y-2 mb-6 text-sm">
-          <li class="flex gap-2"><span>✔︎</span><span>Envío 24–72h*</span></li>
-          <li class="flex gap-2"><span>✔︎</span><span>Pago contra entrega</span></li>
-          <li class="flex gap-2"><span>✔︎</span><span>Soporte por WhatsApp</span></li>
-        </ul>
-        <a href="#pedido" class="mt-auto inline-flex justify-center items-center gap-2 rounded-xl px-5 py-3 bg-emerald-500 text-black font-semibold hover:scale-[1.02] active:scale-95">
-          Elegir Pack Inicio
-        </a>
-      </div>
+	<!-- FAQ -->
+	<section id="faq" class="max-w-6xl mx-auto px-4 py-12">
+		<div class="rounded-3xl bg-white/5 border border-white/10 p-6 md:p-8 text-sm">
+			<h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Preguntas frecuentes</h2>
+			<div class="space-y-4 text-white/80 max-w-4xl mx-auto">
+				<details class="p-3 rounded-xl bg-black/30 hover:bg-black/50 transition cursor-pointer" open>
+					<summary class="font-semibold text-white">¿En cuánto tiempo llega mi pedido?</summary>
+					<p class="pt-2 pl-2">El tiempo estimado es de 24 a 72 horas hábiles según tu ciudad en Ecuador continental.</p>
+				</details>
+				<details class="p-3 rounded-xl bg-black/30 hover:bg-black/50 transition cursor-pointer">
+					<summary class="font-semibold text-white">¿Cómo funciona el pago contra entrega?</summary>
+					<p class="pt-2 pl-2">Dejas tus datos en el formulario, te contactamos por WhatsApp para confirmar dirección, horario y formas de pago. Pagas cuando el producto llega a tu domicilio (efectivo o transferencia según la ciudad).</p>
+				</details>
+				<details class="p-3 rounded-xl bg-black/30 hover:bg-black/50 transition cursor-pointer">
+					<summary class="font-semibold text-white">¿Lo pueden tomar todas las personas?</summary>
+					<p class="pt-2 pl-2">Está pensado para adultos sanos. Si estás embarazada, en lactancia, tomas medicación o tienes una condición médica, consulta a tu médico antes de usarlo.</p>
+				</details>
+				<details class="p-3 rounded-xl bg-black/30 hover:bg-black/50 transition cursor-pointer">
+					<summary class="font-semibold text-white">¿Cuántas porciones trae cada pouch?</summary>
+					<p class="pt-2 pl-2">Cada pouch rinde aproximadamente 30 porciones usando 1 scoop diario.</p>
+				</details>
+				<details class="p-3 rounded-xl bg-black/30 hover:bg-black/50 transition cursor-pointer">
+					<summary class="font-semibold text-white">¿Qué pasa si llega dañado?</summary>
+					<p class="pt-2 pl-2">Si el empaque llega roto o en mal estado, nos escribes por WhatsApp con fotos y revisamos el reemplazo de acuerdo con nuestro protocolo de garantía. Tu satisfacción es importante.</p>
+				</details>
+			</div>
+		</div>
+	</section>
 
-      <!-- Plan 2 (destacado) -->
-      <div class="relative rounded-3xl border-2 border-emerald-400 bg-white/5 p-6 flex flex-col glow">
-        <div class="absolute -top-3 right-6 text-xs bg-emerald-500 text-black px-3 py-1 rounded-full shadow">
-          Más elegido
-        </div>
-        <div class="absolute -top-3 left-6 text-xs bg-white text-black px-3 py-1 rounded-full shadow">
-          Mejor relación valor/precio
-        </div>
-        <h3 class="text-xl font-semibold">Pack Mensual</h3>
-        <p class="text-white/70 text-sm mb-2">Para tomar Super Greens todos los días del mes.</p>
-        <div class="text-sm text-white/60 line-through">$95</div>
-        <div class="text-4xl font-extrabold mb-1">$80 <span class="text-sm text-white/60 font-medium">USD</span></div>
-        <div class="text-xs text-white/70 mb-4">Precio por porción más conveniente.</div>
-        <ul class="text-white/80 space-y-2 mb-6 text-sm">
-          <li class="flex gap-2"><span>✔︎</span><span>Envío incluido*</span></li>
-          <li class="flex gap-2"><span>✔︎</span><span>Shaker o detalle especial (según disponibilidad)</span></li>
-          <li class="flex gap-2"><span>✔︎</span><span>Prioridad en reposición</span></li>
-        </ul>
-        <a href="#pedido" class="mt-auto inline-flex justify-center items-center gap-2 rounded-xl px-5 py-3 bg-emerald-500 text-black font-semibold hover:scale-[1.02] active:scale-95">
-          Elegir Pack Mensual
-        </a>
-      </div>
+	<!-- FORMULARIO PEDIDO -->
+	<section id="pedido" class="max-w-5xl mx-auto px-4 py-14">
+		<div class="rounded-3xl bg-white/5 border border-white/10 p-6 md:p-8 text-sm">
+			<h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">Pide tu SuperGreens – Pago contra entrega</h2>
+			<p class="text-white/80 mb-6 text-center">
+				Deja tus datos y te contactaremos por WhatsApp para confirmar la dirección, el horario y la forma de pago.
+			</p>
+			<form id="leadForm" class="grid md:grid-cols-2 gap-4">
+				<div>
+					<label for="name" class="block text-xs text-white/70 mb-1">Nombre y apellido</label>
+					<input id="name" name="name" required class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2" placeholder="Tu nombre completo" autocomplete="name" />
+				</div>
+				<div>
+					<label for="phone" class="block text-xs text-white/70 mb-1">Teléfono (WhatsApp)</label>
+					<input
+						id="phone"
+						name="phone"
+						required
+						type="tel"
+						inputmode="tel"
+						pattern="0[0-9]{8,9}"
+						class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2"
+						placeholder="09xxxxxxxx"
+						autocomplete="tel"
+					/>
+					<p class="mt-1 text-[11px] text-white/50">Formato sugerido: 09xxxxxxxx (celular de Ecuador).</p>
+				</div>
+				<div>
+					<label for="prov" class="block text-xs text-white/70 mb-1">Provincia</label>
+					<input id="prov" name="prov" required class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2" placeholder="Provincia" autocomplete="address-level1" />
+				</div>
+				<div>
+					<label for="city" class="block text-xs text-white/70 mb-1">Ciudad</label>
+					<input id="city" name="city" required class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2" placeholder="Ciudad" autocomplete="address-level2" />
+				</div>
+				<div class="md:col-span-2">
+					<label for="addr" class="block text-xs text-white/70 mb-1">Dirección exacta</label>
+					<input id="addr" name="addr" required class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2" placeholder="Calle, número, referencia" autocomplete="street-address" />
+				</div>
+				<div class="md:col-span-2">
+					<label for="ref" class="block text-xs text-white/70 mb-1">Referencia (opcional)</label>
+					<input id="ref" name="ref" class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2" placeholder="Frente a..., junto a..., cerca de..." />
+				</div>
+				<div>
+					<label for="packSelect" class="block text-xs text-white/70 mb-1">Pack</label>
+					<select id="packSelect" name="pack" class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2">
+						<option value="Starter (1 pouch)">Starter (1 pouch) - $45</option>
+						<option value="Dúo Ahorro (2 pouches)" selected>Dúo Ahorro (2 pouches) - $80</option>
+						<option value="Mega Fan (3 pouches)">Mega Fan (3 pouches) - $115</option>
+					</select>
+				</div>
+				<div>
+					<label for="qty" class="block text-xs text-white/70 mb-1">Cantidad de packs</label>
+					<input id="qty" name="qty" type="number" min="1" value="1" class="w-full px-3 py-3 rounded-xl bg-black/30 border border-white/10 transition duration-150 focus:ring-emerald-400 focus:ring-2" />
+				</div>
+				<div class="md:col-span-2 flex flex-col sm:flex-row gap-3 pt-4">
+					<!-- Botón principal de envío a WhatsApp (Usamos el primer número por defecto) -->
+					<button type="button" onclick="sendToWA('593983264446')" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-500 text-black font-semibold shadow-xl shadow-emerald-500/30 hover:scale-[1.03] active:scale-95 transition duration-150 flex items-center justify-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2c-5.522 0-9.999 4.478-9.999 10 0 1.77 0.461 3.447 1.258 4.908l-1.399 5.094 5.234-1.378c1.458 0.778 3.09 1.189 4.907 1.189 5.523 0 10.001-4.478 10.001-10 0-5.522-4.478-10-10.001-10zm4.512 13.926c-0.246 0.284-0.518 0.317-0.908 0.164-0.34-.143-1.602-0.648-1.859-0.73-0.254-0.082-0.44-0.082-0.627 0.082-0.187 0.164-0.716 0.88-0.919 1.106-0.187 0.226-0.375 0.258-0.697 0.082-0.312-0.176-1.3-0.485-2.482-1.536-0.91-0.793-1.523-1.782-1.709-2.094-0.187-0.312-0.021-0.485 0.143-0.648 0.143-0.143 0.317-0.366 0.481-0.542 0.164-0.176 0.218-0.301 0.273-0.426 0.055-0.133 0.027-0.258-0.014-0.485-0.041-0.226-0.426-1.028-0.589-1.405-0.164-0.375-0.339-0.312-0.481-0.312h-0.413c-0.143 0-0.366 0.051-0.552 0.231-0.187 0.176-0.716 0.697-0.716 1.706 0 1.008 0.73 1.954 0.838 2.094 0.109 0.143 1.408 2.148 3.385 3.085 1.761 0.817 2.375 0.838 2.801 0.756 0.481-0.09 1.547-0.638 1.839-1.258 0.292-0.619 0.292-1.15 0.209-1.304-0.082-0.143-0.254-0.226-0.518-0.352z"/></svg>
+						Confirma tu pedido ahora
+					</button>
+					<button type="button" onclick="sendToWA('593986199193')" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 text-white/80 font-semibold shadow-md hover:bg-white/20 active:scale-95 transition duration-150 flex items-center justify-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2c-5.522 0-9.999 4.478-9.999 10 0 1.77 0.461 3.447 1.258 4.908l-1.399 5.094 5.234-1.378c1.458 0.778 3.09 1.189 4.907 1.189 5.523 0 10.001-4.478 10.001-10 0-5.522-4.478-10-10.001-10zm4.512 13.926c-0.246 0.284-0.518 0.317-0.908 0.164-0.34-.143-1.602-0.648-1.859-0.73-0.254-0.082-0.44-0.082-0.627 0.082-0.187 0.164-0.716 0.88-0.919 1.106-0.187 0.226-0.375 0.258-0.697 0.082-0.312-0.176-1.3-0.485-2.482-1.536-0.91-0.793-1.523-1.782-1.709-2.094-0.187-0.312-0.021-0.485 0.143-0.648 0.143-0.143 0.317-0.366 0.481-0.542 0.164-0.176 0.218-0.301 0.273-0.426 0.055-0.133 0.027-0.258-0.014-0.485-0.041-0.226-0.426-1.028-0.589-1.405-0.164-0.375-0.339-0.312-0.481-0.312h-0.413c-0.143 0-0.366 0.051-0.552 0.231-0.187 0.176-0.716 0.697-0.716 1.706 0 1.008 0.73 1.954 0.838 2.094 0.109 0.143 1.408 2.148 3.385 3.085 1.761 0.817 2.375 0.838 2.801 0.756 0.481-0.09 1.547-0.638 1.839-1.258 0.292-0.619 0.292-1.15 0.209-1.304-0.082-0.143-0.254-0.226-0.518-0.352z"/></svg>
+						Alternativa 098 619 9193
+					</button>
+				</div>
+				<p class="md:col-span-2 text-[11px] text-white/60 mt-2 text-center">
+					Usaremos tus datos exclusivamente para coordinar el envío, confirmar tu pedido y ofrecer soporte relacionado con SuperGreens Flex Pro.
+				</p>
+			</form>
+		</div>
+	</section>
 
-      <!-- Plan 3 -->
-      <div class="relative rounded-3xl border border-white/10 bg-white/5 p-6 flex flex-col">
-        <h3 class="text-xl font-semibold">Pack Duo / Familia</h3>
-        <p class="text-white/70 text-sm mb-2">Para compartir o asegurar stock de 2 personas.</p>
-        <div class="text-sm text-white/60 line-through">$140</div>
-        <div class="text-4xl font-extrabold mb-1">$115 <span class="text-sm text-white/60 font-medium">USD</span></div>
-        <div class="text-xs text-white/70 mb-4">Mejor precio por volumen.</div>
-        <ul class="text-white/80 space-y-2 mb-6 text-sm">
-          <li class="flex gap-2"><span>✔︎</span><span>Envío incluido*</span></li>
-          <li class="flex gap-2"><span>✔︎</span><span>Atención preferencial</span></li>
-          <li class="flex gap-2"><span>✔︎</span><span>Ideal para pareja o roommates</span></li>
-        </ul>
-        <a href="#pedido" class="mt-auto inline-flex justify-center items-center gap-2 rounded-xl px-5 py-3 bg-emerald-500 text-black font-semibold hover:scale-[1.02] active:scale-95">
-          Elegir Pack Duo
-        </a>
-      </div>
-    </div>
-    <p class="max-w-3xl mx-auto mt-4 text-xs text-white/60 text-center">
-      *Tiempos y condiciones de envío pueden variar según ciudad y demanda. Confirmaremos todo por WhatsApp antes de despachar tu pedido.
-    </p>
-  </section>
+	<!-- STICKY CTA MÓVIL -->
+	<div class="fixed md:hidden bottom-0 inset-x-0 z-40 border-t border-white/10 bg-black/85 backdrop-blur">
+		<div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+			<div class="text-[11px]">
+				<div class="font-semibold text-white">Envío GRATIS por 10 minutos</div>
+				<div class="text-white/70">Paga al recibir en tu ciudad</div>
+			</div>
+			<button
+				onclick="document.getElementById('pedido').scrollIntoView({behavior:'smooth'})"
+				class="px-4 py-2 rounded-xl bg-emerald-500 text-black font-semibold text-xs shadow-md shadow-emerald-500/30 active:scale-95 transition duration-150"
+			>
+				Pedir ahora
+			</button>
+		</div>
+	</div>
 
-  <!-- TESTIMONIOS -->
-  <section class="max-w-7xl mx-auto px-4 pb-6">
-    <h3 class="text-2xl font-bold mb-4">Lo que comentan quienes ya toman Super Greens</h3>
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Puedes reemplazar por tu video -->
-      <a class="rounded-2xl border border-white/10 bg-white/5 p-5 block hover:bg-white/10 transition" href="#" target="_blank" rel="noopener">
-        <img class="w-full rounded-xl" alt="Video o demo de Super Greens" src="https://placehold.co/600x340/022c22/ffffff?text=Video+testimonios" />
-        <div class="mt-3 text-sm text-white/80">Haz clic para ver un video corto sobre cómo usar Super Greens y qué opinan nuestros clientes.</div>
-      </a>
-      <div class="grid gap-4">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-          “Desde que empecé con Super Greens en ayunas siento la digestión más ligera y llego con mejor energía al final del día.”
-          <div class="mt-2 text-sm text-white/70">— Cliente 1</div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-          “No soy fan de las verduras, pero así sí puedo cumplir. Es rápido, práctico y no me salgo del presupuesto.”
-          <div class="mt-2 text-sm text-white/70">— Cliente 2</div>
-        </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-          “Lo tomamos en casa mi pareja y yo. Menos café, más green, y se siente.”
-          <div class="mt-2 text-sm text-white/70">— Cliente 3</div>
-        </div>
-      </div>
-    </div>
-  </section>
+	<!-- FOOTER -->
+	<footer class="border-t border-white/10 py-8 text-center text-[11px] text-white/60 px-4">
+		<p>© <span id="year"></span> SuperGreens Flex Pro. Todos los derechos reservados.</p>
+		<p class="mt-2 max-w-3xl mx-auto">
+			<a href="#" class="text-white/70 hover:text-white underline-offset-4 hover:underline">Política de Privacidad</a> |
+			<a href="#" class="text-white/70 hover:text-white underline-offset-4 hover:underline">Términos y Condiciones</a>
+		</p>
+		<p class="mt-3 max-w-3xl mx-auto">
+			*Este producto no pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad. La información de esta página
+			es de carácter general y no sustituye el consejo de un profesional de la salud. Los resultados pueden variar según cada persona.*
+		</p>
+	</footer>
 
-  <!-- FORM LEAD -->
-  <section id="pedido" class="max-w-4xl mx-auto px-4 py-16">
-    <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-      <h2 class="text-2xl md:text-3xl font-bold">Pide Super Greens – Pago contra entrega</h2>
-      <p class="text-white/80 mb-4">
-        Completa este formulario en <span class="font-semibold">menos de 10 min</span> para acceder a 
-        <span class="text-emerald-300 font-semibold">prioridad de envío</span> y al 
-        <span class="font-semibold">beneficio especial de hoy</span>.
-      </p>
-      <form id="leadForm" class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm text-white/70 mb-1">Nombre y Apellido</label>
-          <input required name="name" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3" placeholder="Tu nombre completo"/>
-        </div>
-        <div>
-          <label class="block text-sm text-white/70 mb-1">Teléfono</label>
-          <input required name="phone" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3" placeholder="09xxxxxxxx"/>
-        </div>
-        <div>
-          <label class="block text-sm text-white/70 mb-1">Provincia</label>
-          <input required name="prov" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3" placeholder="Provincia"/>
-        </div>
-        <div>
-          <label class="block text-sm text-white/70 mb-1">Ciudad</label>
-          <input required name="city" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3" placeholder="Ciudad"/>
-        </div>
-        <div class="md:col-span-2">
-          <label class="block text-sm text-white/70 mb-1">Dirección exacta</label>
-          <input required name="addr" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3" placeholder="Calle, número, referencia"/>
-        </div>
-        <div class="md:col-span-2">
-          <label class="block text-sm text-white/70 mb-1">Referencia</label>
-          <input name="ref" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3" placeholder="Punto de referencia (opcional)"/>
-        </div>
-        <div>
-          <label class="block text-sm text-white/70 mb-1">Pack</label>
-          <select name="pack" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3">
-            <option>Pack Inicio</option>
-            <option>Pack Mensual</option>
-            <option>Pack Duo / Familia</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-sm text-white/70 mb-1">Cantidad</label>
-          <input name="qty" type="number" min="1" value="1" class="w-full rounded-xl bg-black/30 border border-white/10 px-3 py-3"/>
-        </div>
-        <div class="md:col-span-2 flex flex-wrap gap-3">
-          <button type="button" id="sendWA1" class="rounded-xl px-5 py-3 bg-emerald-500 text-black font-semibold">
-            Enviar a WhatsApp 1
-          </button>
-          <button type="button" id="sendWA2" class="rounded-xl px-5 py-3 bg-emerald-500 text-black font-semibold">
-            Enviar a WhatsApp 2
-          </button>
-        </div>
-        <p class="md:col-span-2 text-xs text-white/60">
-          Al enviar aceptas nuestra Política de privacidad. Usaremos tus datos solo para coordinar el pedido de Super Greens y soporte relacionado.
-        </p>
-      </form>
-    </div>
-  </section>
+	<script>
+		// Año dinámico
+		document.getElementById('year').textContent = new Date().getFullYear();
 
-  <!-- FAQ -->
-  <section id="faq" class="max-w-4xl mx-auto px-4 pb-16">
-    <h2 class="text-2xl md:text-3xl font-bold mb-6">Preguntas frecuentes</h2>
-    <div class="space-y-4">
-      <details class="rounded-2xl border border-white/10 bg-white/5 p-4">
-        <summary class="cursor-pointer font-semibold">¿El pago es realmente contra entrega?</summary>
-        <p class="mt-2 text-sm text-white/80">
-          Sí. Coordinamos por WhatsApp y pagas cuando recibes tu Super Greens. Así compras con tranquilidad.
-        </p>
-      </details>
-      <details class="rounded-2xl border border-white/10 bg-white/5 p-4">
-        <summary class="cursor-pointer font-semibold">¿Cuánto tarda el envío?</summary>
-        <p class="mt-2 text-sm text-white/80">
-          Normalmente entre 24 y 72 horas hábiles, dependiendo de tu ciudad y la demanda. Confirmamos tiempos exactos por WhatsApp antes de despachar.
-        </p>
-      </details>
-      <details class="rounded-2xl border border-white/10 bg-white/5 p-4">
-        <summary class="cursor-pointer font-semibold">¿Super Greens sustituye mis comidas?</summary>
-        <p class="mt-2 text-sm text-white/80">
-          No. Super Greens complementa tu alimentación, no reemplaza una dieta equilibrada ni recomendaciones médicas. Es un aliado, no la única estrategia.
-        </p>
-      </details>
-      <details class="rounded-2xl border border-white/10 bg-white/5 p-4">
-        <summary class="cursor-pointer font-semibold">¿Puedo tomarlo si tengo una condición médica?</summary>
-        <p class="mt-2 text-sm text-white/80">
-          Si tienes una condición de salud, tomas medicación o estás embarazada/lactando, consulta primero con tu profesional de salud antes de incorporar cualquier suplemento.
-        </p>
-      </details>
-    </div>
-  </section>
+		// Seleccionar "Dúo Ahorro" por defecto al cargar
+		document.addEventListener('DOMContentLoaded', () => {
+			const packSelect = document.getElementById('packSelect');
+			if (packSelect) {
+				const duoOption = Array.from(packSelect.options).find(opt => opt.value.includes('Dúo Ahorro'));
+				if (duoOption) {
+					duoOption.selected = true;
+				}
+			}
+		});
 
-  <!-- STICKY MOBILE CTA -->
-  <div class="fixed md:hidden bottom-0 inset-x-0 z-50 border-t border-white/10 bg-black/80 backdrop-blur">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-      <div class="text-sm">
-        <div class="font-semibold">Super Greens con oferta activa</div>
-        <div class="text-white/70">Completa tus datos y paga al recibir</div>
-      </div>
-      <a href="#pedido" class="rounded-xl px-5 py-3 bg-emerald-500 text-black font-semibold">Pedir</a>
-    </div>
-  </div>
+		/**
+		 * Función para hacer scroll al formulario y seleccionar el pack automáticamente.
+		 * @param {string} packName - El nombre del pack a seleccionar.
+		 */
+		function scrollToPedido(packName){
+			const select = document.getElementById('packSelect');
+			if(select){
+				for(let op of select.options){
+					// Selecciona la opción que coincida con el nombre del pack
+					if(op.value.startsWith(packName)) op.selected = true;
+				}
+			}
+			// Hace scroll al formulario de pedido
+			document.getElementById('pedido').scrollIntoView({behavior:'smooth'});
+		}
 
-  <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-24 md:bottom-10 z-[60] px-4 py-3 rounded-xl bg-emerald-500 text-black font-semibold shadow-xl opacity-0 pointer-events-none transition duration-300">
-    Pedido enviado a WhatsApp ✅
-  </div>
+		// Contador 10 minutos (IIFE para encapsular)
+		(function(){
+			const el = document.getElementById('countdown');
+			if(!el) return;
+			
+			// Intentamos obtener el tiempo de finalización desde sessionStorage para persistencia
+			let targetTime = sessionStorage.getItem('promoEndTime');
+			
+			if (!targetTime || Date.now() > parseInt(targetTime)) {
+				// Si no existe o ya expiró, establece uno nuevo (10 minutos)
+				targetTime = Date.now() + 10 * 60 * 1000;
+				sessionStorage.setItem('promoEndTime', targetTime);
+			} else {
+				targetTime = parseInt(targetTime);
+			}
 
-  <!-- FOOTER -->
-  <footer class="py-10 text-center text-white/70 text-sm">
-    <div class="max-w-7xl mx-auto px-4">
-      <p class="mb-2">© <span id="y"></span> Super Greens. Todos los derechos reservados.</p>
-      <p class="mb-4">*Super Greens no reemplaza asesoría médica personalizada ni una alimentación equilibrada.</p>
-      <div class="flex items-center justify-center gap-4">
-        <a href="#" class="hover:text-white">Política de privacidad</a>
-        <a href="#" class="hover:text-white">Términos de servicio</a>
-        <a href="#pedido" class="hover:text-white">Contacto</a>
-      </div>
-    </div>
-  </footer>
+			const pad = n => String(n).padStart(2, '0');
 
-  <script>
-    // 10-min countdown
-    const target = Date.now() + 10 * 60 * 1000;
-    const el = document.getElementById('countdown');
-    const pad = n => String(n).padStart(2, '0');
+			// Función de actualización del contador
+			function updateCountdown() {
+				const diff = Math.max(0, targetTime - Date.now());
+				const m = Math.floor(diff / 60000);
+				const s = Math.floor((diff % 60000) / 1000);
 
-    setInterval(() => {
-      const t = Math.max(0, target - Date.now());
-      const m = Math.floor(t / 60000);
-      const s = Math.floor((t % 60000) / 1000);
-      if (el) el.textContent = `00:${pad(m)}:${pad(s)}`;
-    }, 1000);
+				if (diff <= 0) {
+					el.textContent = '¡La promo terminó!';
+					// Opcional: Ocultar o cambiar la barra de promo aquí si lo deseas
+				} else {
+					el.textContent = `Quedan ${pad(m)}:${pad(s)}`;
+				}
+			}
 
-    // Builder del mensaje de WhatsApp
-    function buildWhatsAppMessage(data) {
-      const lines = [
-        '🟢 *Nuevo pedido – Super Greens*',
-        `• Nombre: ${data.name || ''}`,
-        `• Teléfono: ${data.phone || ''}`,
-        `• Provincia: ${data.prov || ''}`,
-        `• Ciudad: ${data.city || ''}`,
-        `• Dirección: ${data.addr || ''}`,
-        `• Referencia: ${data.ref || '-'}`,
-        `• Pack: ${data.pack || ''}`,
-        `• Cantidad: ${data.qty || '1'}`,
-        '—',
-        'Canal web: Landing page Super Greens.'
-      ];
-      return encodeURIComponent(lines.join('\n'));
-    }
+			// Inicia y actualiza el contador
+			updateCountdown();
+			setInterval(updateCountdown, 1000);
+		})();
 
-    const f = document.getElementById('leadForm');
-    function waMsg() {
-      if (!f) return '';
-      const data = Object.fromEntries(new FormData(f).entries());
-      return buildWhatsAppMessage(data);
-    }
+		/**
+		 * Construye el mensaje pre-llenado de WhatsApp con los datos del formulario.
+		 * @returns {string} Mensaje codificado para URL.
+		 */
+		function buildWAMessage(){
+			const form = document.getElementById('leadForm');
+			const data = Object.fromEntries(new FormData(form).entries());
+			
+			// Determinar el precio basado en la opción seleccionada
+			let packPrice = '';
+			const selectedOption = document.getElementById('packSelect').options[document.getElementById('packSelect').selectedIndex].text;
+			const priceMatch = selectedOption.match(/\$([\d]+)/);
+			if (priceMatch) {
+				packPrice = ` - $${priceMatch[1]}`;
+			}
 
-    // TELÉFONOS PARA EL FORMULARIO
-    const PHONE_1 = '593983264446';
-    const PHONE_2 = '593986199193';
+			// Extraer solo el nombre del pack sin el precio o unidades
+			const packName = data.pack ? data.pack.split(' - ')[0] : 'No especificado';
+			const totalPrice = (parseFloat(priceMatch ? priceMatch[1] : 0) * parseInt(data.qty || 1)).toFixed(2);
+			
+			const lines = [
+				'🟢 *Pedido SuperGreens Flex Pro*',
+				`• Nombre: ${data.name || 'N/A'}`,
+				`• Teléfono: ${data.phone || 'N/A'}`,
+				`• Pack Solicitado: ${packName} x ${data.qty || '1'} pack(s)`,
+				`• Precio total (aprox): $${totalPrice} USD`,
+				'',
+				'📍 *Datos de Envío (Pago Contra Entrega)*',
+				`• Provincia: ${data.prov || 'N/A'}`,
+				`• Ciudad: ${data.city || 'N/A'}`,
+				`• Dirección: ${data.addr || 'N/A'}`,
+				`• Referencia: ${data.ref || '-'}`,
+				'',
+				'Forma de pago preferida: Contra entrega. Por favor, confírmenme el pedido.'
+			];
+			return encodeURIComponent(lines.join('\n'));
+		}
 
-    function openWA(phone) {
-      const url = `https://wa.me/${phone}?text=${waMsg()}`;
-      window.open(url, '_blank');
-      try { f?.reset(); } catch (e) {}
-      const t = document.getElementById('toast');
-      if (t) {
-        t.style.opacity = '1';
-        t.style.pointerEvents = 'auto';
-        setTimeout(() => {
-          t.style.opacity = '0';
-          t.style.pointerEvents = 'none';
-        }, 2500);
-      }
-    }
+		/**
+		 * Valida el formulario y abre el link de WhatsApp.
+		 * @param {string} phone - Número de teléfono de destino.
+		 */
+		function sendToWA(phone){
+			const form = document.getElementById('leadForm');
+			
+			// reportValidity() valida y muestra los errores en el navegador si hay campos requeridos vacíos.
+			if(form.reportValidity()){
+				const msg = buildWAMessage();
+				const url = `https://wa.me/${phone}?text=${msg}`;
+				window.open(url, '_blank');
+				
+				// Opcional: Limpiar el formulario después de enviar
+				// form.reset(); 
+			} else {
+				// El navegador ya maneja el mensaje de error por defecto, pero se puede añadir un log
+				console.error("Formulario incompleto. Revisa los campos requeridos.");
+			}
+		}
 
-    document.getElementById('sendWA1')?.addEventListener('click', () => openWA(PHONE_1));
-    document.getElementById('sendWA2')?.addEventListener('click', () => openWA(PHONE_2));
-    document.getElementById('openLead')?.addEventListener('click', () => { location.hash = '#pedido'; });
-
-    // Año en footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+	</script>
 </body>
 </html>
